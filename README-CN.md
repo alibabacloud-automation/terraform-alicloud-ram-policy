@@ -1,23 +1,23 @@
 # terraform-alicloud-ram-policy
-Terraform module which create RAM policies on Alibaba Cloud.
+Terraform模块，可在阿里云上创建RAM策略。
 
 =====================================================================
 
-English | [简体中文](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/README-CN.md)
+中文简体 | [English](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/README.md)
 
-Terraform module can create custom policies on Alibaba Cloud.
+Terraform模块可以在阿里云上创建自定义策略。
 
-These types of resources are supported:
+支持以下类型的资源：
 
 * [RAM policy](https://www.terraform.io/docs/providers/alicloud/r/ram_policy.html)
 
-## Terraform versions
+## Terraform 版本
 
-For Terraform 0.12.
+如果您正在使用 Terraform 0.12.
 
-## Usage
+## 用法
 
-#### Create policy using terraform default actions 
+#### 使用Terraform默认的操作创建自定义策略
 
 ```hcl
 module "instance_policy" {
@@ -28,14 +28,14 @@ module "instance_policy" {
        name = "test"
        # defined_action is the default resource operation specified by the system. You can refer to the `policies.tf` file.
        defined_action   = join(",", ["instance-create", "vpc-create", "vswitch-create", "security-group-create"])
-       effect           = "Allow"
-       force            = "true"
+       effect             = "Allow"
+       force              = "true"
     }
   ]
 }
 ```
 
-#### Create policies with custom actions and resources
+#### 使用自定义的操作和资源创建自定义策略
 
 ```hcl
 module "instance_policy" {
@@ -46,21 +46,21 @@ module "instance_policy" {
         #resources is the specific object authorized to customize.
         actions    = join(",", ["ecs:xxxx", "vpc:xxxx", "vswitch:xxxe"])
         resources  = join(",", ["xxx:ecs:xxxx", "xxx:vpc:xxxx", "xxx:vswitch:xxxe"])
-        effect     = "Deny"
+        effect           = "Deny"
     }
   ]
 }
 ```
 
-#### Create policies using terraform's default and custom actions resources
+#### 使用Terraform默认和自定义的操作结合创建自定义策略
 
 ```hcl
 module "instance_policy" {
   source = "terraform-alicloud-modules/ram-policy/alicloud"
   policies = [
     {
-    actions          = join(",", ["ecs:xxxx", "vpc:xxxx", "vswitch:xxxe"])
-    resources        = join(",", ["xxx:ecs:xxxx", "xxx:vpc:xxxx", "xxx:vswitch:xxxe"])
+    actions    = join(",", ["ecs:xxxx", "vpc:xxxx", "vswitch:xxxe"])
+    resources  = join(",", ["xxx:ecs:xxxx", "xxx:vpc:xxxx", "xxx:vswitch:xxxe"])
     defined_action   = join(",", ["instance-create", "vpc-create", "vswitch-create", "security-group-create"])
     defined_resource = join(",", ["instance-resource", "vpc-resource", "security-group-resource", "vswitch-resource"])
     effect           = "Allow"
@@ -70,19 +70,20 @@ module "instance_policy" {
 ```
 
 
-## Examples
+## 示例
 
 * [ecs-instance-policy example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/tree/master/examples/ecs-instance-create)
 
-Authors
+
+作者
 -------
 Created and maintained by Zhou qilin(z17810666992@163.com), He Guimin(@xiaozhu36, heguimin36@163.com)
 
-License
+许可
 ----
 Apache 2 Licensed. See LICENSE for full details.
 
-Reference
+参考
 ---------
 * [Terraform-Provider-Alicloud Github](https://github.com/terraform-providers/terraform-provider-alicloud)
 * [Terraform-Provider-Alicloud Release](https://releases.hashicorp.com/terraform-provider-alicloud/)
