@@ -1,6 +1,5 @@
-# terraform-alicloud-ram-policy
-Terraform module which create RAM policies on Alibaba Cloud.
-
+Terraform module which create RAM policies on Alibaba Cloud.   
+terraform-alicloud-ram-policy
 =====================================================================
 
 English | [简体中文](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/README-CN.md)
@@ -13,66 +12,53 @@ These types of resources are supported:
 
 ## Terraform versions
 
-For Terraform 0.12.
+The Module requires Terraform 0.12.
 
 ## Usage
 
-#### Create policy using terraform default actions 
-
 ```hcl
-module "instance_policy" {
+module "ram-policy" {
   source = "terraform-alicloud-modules/ram-policy/alicloud"
   policies = [
+    #########################################
+    # Create policies using default actions #
+    #########################################
     {
-       # name is the name of the policy, if not specified, the system will generate names prefixed with `terraform_ram_policy_` by default
+       # name is the name of the policy, default to a name with prefix `terraform-ram-policy-`
        name = "test"
        # defined_action is the default resource operation specified by the system. You can refer to the `policies.tf` file.
-       defined_action   = join(",", ["instance-create", "vpc-create", "vswitch-create", "security-group-create"])
+       defined_actions   = join(",", ["instance-create", "vpc-create", "vswitch-create", "security-group-create"])
        effect           = "Allow"
        force            = "true"
-    }
-  ]
-}
-```
+    },
 
-#### Create policies with custom actions and resources
-
-```hcl
-module "instance_policy" {
-  source = "terraform-alicloud-modules/ram-policy/alicloud"
-  policies = [
+    ########################################
+    # Create policies using custom actions #
+    ########################################
     {
         #actions is the action of custom specific resource.
         #resources is the specific object authorized to customize.
-        actions    = join(",", ["ecs:xxxx", "vpc:xxxx", "vswitch:xxxe"])
-        resources  = join(",", ["xxx:ecs:xxxx", "xxx:vpc:xxxx", "xxx:vswitch:xxxe"])
+        actions    = join(",", ["ecs:ModifyInstanceAttribute", "vpc:ModifyVpc", "vswitch:ModifyVSwitch"])
+        resources  = join(",", ["acs:ecs:*:*:instance/i-001", "acs:vpc:*:*:vpc/v-001", "acs:vpc:*:*:vswitch/vsw-001"])
         effect     = "Deny"
-    }
-  ]
-}
-```
-
-#### Create policies using terraform's default and custom actions resources
-
-```hcl
-module "instance_policy" {
-  source = "terraform-alicloud-modules/ram-policy/alicloud"
-  policies = [
+    },
+    
+    #########################################################
+    # Create policies using both default and custom actions #
+    #########################################################  
     {
-    actions          = join(",", ["ecs:xxxx", "vpc:xxxx", "vswitch:xxxe"])
-    resources        = join(",", ["xxx:ecs:xxxx", "xxx:vpc:xxxx", "xxx:vswitch:xxxe"])
-    defined_action   = join(",", ["instance-create", "vpc-create", "vswitch-create", "security-group-create"])
-    defined_resource = join(",", ["instance-resource", "vpc-resource", "security-group-resource", "vswitch-resource"])
-    effect           = "Allow"
+        defined_actions   = join(",", ["security-group-read", "security-group-rule-read"])
+        actions          = join(",", ["ecs:JoinSecurityGroup", "ecs:LeaveSecurityGroup"])
+        resources = join(",", ["acs:ecs:cn-qingdao:*:instance/*", "acs:ecs:cn-qingdao:*:security-group/*"])
+        effect           = "Allow"
     }
   ]
 }
 ```
-
 
 ## Examples
 
-* [ecs-instance-policy example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/tree/master/examples/ecs-instance-create)
+* [Complete Ram Policy example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/tree/master/examples/complete)
 
 Authors
 -------

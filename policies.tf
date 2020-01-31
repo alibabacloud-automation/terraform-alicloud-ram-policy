@@ -1,129 +1,376 @@
 variable "defined_actions" {
-  description = "Operations on specific resources."
+  description = "Map of several defined actions"
   type        = map(list(string))
   default = {
     ###########################
-    # ecs policy
+    # resource ecs instance policy
     ###########################
     instance-create = [
-      "ecs:Describe*",
-      "ecs:List*",
-      "vpc:Describe*",
+      "ecs:DescribeAvailableResource",
+      "vpc:DescribeVSwitchAttributes",
+      "ecs:DescribeZones",
+      "ecs:DescribeSecurityGroupAttribute",
       "ecs:RunInstances",
       "ecs:UntagResources",
       "ecs:TagResources",
+      "ecs:DescribeDisks",
       "ecs:JoinSecurityGroup",
       "ecs:LeaveSecurityGroup",
-      "ecs:StartInstance",
-      "ecs:StopInstance",
-      "ecs:Modify*",
-      "ecs:AllocatePublicIpAddress",
+      "kms:Decrypt",
+      "ecs:ModifyInstanceAutoReleaseTime",
+      "ecs:ModifyInstanceAutoRenewAttribute",
+      "ecs:DescribeInstances",
+      "ecs:DescribeUserData",
+      "ecs:DescribeInstanceRamRole",
+      "ecs:DescribeInstanceAutoRenewAttribute"
     ],
     instance-update = [
-      "ecs:Decribe*",
       "ecs:UntagResources",
       "ecs:TagResources",
+      "ecs:DescribeDisks",
       "ecs:JoinSecurityGroup",
       "ecs:LeaveSecurityGroup",
       "ecs:AttachKeyPair",
-      "ecs:Modify*",
-      "ecs:StopInstance",
+      "ecs:ModifyInstance*",
       "ecs:ReplaceSystemDisk",
+      "ecs:ModifyPrepayInstanceSpec",
+      "ecs:StopInstance",
       "ecs:StartInstance",
       "ecs:AllocatePublicIpAddress",
+      "ecs:DescribeInstances",
+      "ecs:DescribeUserData",
+      "ecs:DescribeInstanceRamRole",
+      "ecs:DescribeInstanceAutoRenewAttribute"
     ]
-    instance-read   = ["ecs:Describe*", "ecs:List*"],
-    instance-delete = ["ecs:DeleteInstance", "ecs:Modify*", "ecs:Describe*"]
-    instance-all    = ["ecs:*Instance*", "ecs:Tag*", "ecs:Untag*", "ecs:Decribe*", "ecs:Modify*", "ecs:*SecurityGroup*", "ecs:List*", "ecs:Allocate*", "ecs:Attach*", "ecs:Replace*", "vpc:Describe*"]
+    instance-read = [
+      "ecs:DescribeInstances",
+      "ecs:DescribeUserData",
+      "ecs:DescribeInstanceRamRole",
+      "ecs:DescribeInstanceAutoRenewAttribute"
+    ]
+    instance-delete = [
+      "ecs:DeleteInstance",
+      "ecs:ModifyInstanceChargeType",
+      "ecs:StopInstance",
+      "ecs:DescribeInstances"
+    ]
+    instance-all = [
+      "ecs:*Instance*",
+      "ecs:TagResources",
+      "ecs:UntagResources",
+      "ecs:DecribeInstance*",
+      "ecs:JoinSecurityGroup",
+      "ecs:LeaveSecurityGroup",
+      "ecs:AttachKeyPair",
+      "ecs:ReplaceSystemDisk",
+      "ecs:AllocatePublicIpAddress",
+      "ecs:DescribeUserData",
+    ]
 
     ###########################
-    # security policy
+    # resource security group policy
     ###########################
-    security-group-create = ["ecs:CreateSecurityGroup", "ecs:ModifySecurityGroupPolicy", "ecs:ProcessCommonRequest", "ecs:Describe*"]
-    security-group-update = ["ecs:ModifySecurityGroupPolicy"]
-    security-group-read   = ["ecs:DescribeSecurityGroupAttribute", "ecs:DescribeSecurityGroups", "ecs:DescribeTags"]
-    security-group-delete = ["ecs:DeleteSecurityGroup"]
-    security-group-all    = ["ecs:*SecurityGroup*", "ecs:ProcessCommonRequest", "ecs:Describe*"]
+    security-group-create = [
+      "ecs:CreateSecurityGroup",
+      "ecs:UntagResources",
+      "ecs:TagResources",
+      "ecs:ModifySecurityGroupPolicy",
+      "ecs:Describe*"
+    ]
+    security-group-update = [
+      "ecs:UntagResources",
+      "ecs:TagResources",
+      "ecs:ModifySecurityGroupPolicy",
+      "ecs:Describe*"
+    ]
+    security-group-read = [
+      "ecs:DescribeSecurityGroupAttribute",
+      "ecs:DescribeSecurityGroups",
+      "ecs:DescribeTags"
+    ]
+    security-group-delete = [
+      "ecs:DeleteSecurityGroup",
+      "ecs:DescribeSecurityGroupAttribute"
+    ]
+    security-group-all = [
+      "ecs:*SecurityGroup*",
+      "ecs:UntagResources",
+      "ecs:TagResources"
+    ]
 
     ###########################
-    # security-group-rule policy
+    # resource security-group-rule policy
     ###########################
-    security-group-rule-create = ["ecs:DescribeSecurityGroupAttribute", "ecs:ProcessCommonRequest"]
+    security-group-rule-create = ["ecs:AuthorizeSecurityGroup*", "ecs:DescribeSecurityGroupAttribute"]
     security-group-rule-read   = ["ecs:DescribeSecurityGroupAttribute"]
-    security-group-rule-update = ["ecs:DescribeSecurityGroupAttribute", "ecs:ProcessCommonRequest"]
-    security-group-rule-delete = ["ecs:ProcessCommonRequest"]
-    security-group-rule-all    = ["ecs:DescribeSecurityGroupAttribute", "ecs:ProcessCommonRequest"]
+    security-group-rule-update = [
+      "ecs:ModifySecurityGroupRule",
+      "ecs:ModifySecurityGroupEgressRule",
+      "ecs:DescribeSecurityGroupAttribute"
+    ]
+    security-group-rule-delete = ["ecs:RevokeSecurityGroup*", "ecs:DescribeSecurityGroupAttribute"]
+    security-group-rule-all = [
+      "ecs:AuthorizeSecurityGroup*",
+      "ecs:ModifySecurityGroupRule",
+      "ecs:ModifySecurityGroupEgressRule",
+      "ecs:RevokeSecurityGroup*",
+      "ecs:DescribeSecurityGroupAttribute"
+    ]
 
     ###########################
-    # vpc policy
+    # resource disk policy
     ###########################
-    vpc-create = ["vpc:CreateVpc", "vpc:ModifyVpcAttribute", "vpc:Describe*", "vpc:ListTagResources", "vpc:DescribeRouteTables", "vpc:AssociateEipAddress", "vpc:UnassociateEipAddress", "vpc:DescribeEipAddresses"]
-    vpc-update = ["vpc:ModifyVpcAttribute", "vpc:AssociateEipAddress", "vpc:UnassociateEipAddress"]
-    vpc-read   = ["vpc:Describe*", "vpc:ListTagResources", "vpc:DescribeEipAddresses"]
-    vpc-delete = ["vpc:DeleteVpc"]
-    vpc-all    = ["vpc:*Vpc*", "vpc:List*", "vpc:Describe*", "vpc:AssociateEipAddress", "vpc:DescribeEipAddresses", "vpc:UnassociateEipAddress"]
+    disk-create = [
+      "ecs:CreateDisk",
+      "ecs:UntagResources",
+      "ecs:TagResources",
+      "ecs:ModifyDiskAttribute",
+      "ecs:DescribeDisks",
+      "ecs:DescribeZones"
+    ]
+    disk-update = [
+      "ecs:UntagResources",
+      "ecs:TagResources",
+      "ecs:ModifyDiskAttribute",
+      "ecs:ResizeDisk",
+      "ecs:DescribeDisks"
+    ]
+    disk-read   = ["ecs:DescribeDisks"]
+    disk-delete = ["ecs:DeleteDisk", "ecs:DescribeDisks"]
+    disk-attach = [
+      "ecs:AttachDisk",
+      "ecs:DescribeDisks",
+      "ecs:ModifyDiskAttribute"
+    ]
+    disk-detach = ["ecs:DetachDisk", "ecs:DescribeDisks"]
+    disk-all    = ["ecs:*Disk*", "ecs:UntagResources", "ecs:TagResources", "ecs:DescribeZones"]
 
     ###########################
-    # vswitch policy
+    # resource image policy
     ###########################
-    vswitch-create = ["vpc:CreateVSwitch", "vpc:DescribeVSwitchAttributes", "vpc:DescribeVSwitchAttributes", "vpc:ListTagResources"]
-    vswitch-update = ["vpc:ModifyVSwitchAttribute"]
+    image-create = [
+      "ecs:DescribeInstances",
+      "ecs:DescribeSnapshots",
+      "ecs:CreateImage",
+      "ecs:DescribeImages"
+    ]
+    image-update = ["ecs:ModifyImageAttribute", "ecs:DescribeImages"]
+    image-read   = ["ecs:DescribeImages"]
+    image-copy   = ["ecs:CopyImage", "ecs:DescribeImages"]
+    image-import = ["ecs:ImportImage", "ecs:DescribeImages"]
+    image-export = ["ecs:ExportImage", "ecs:DescribeImages"]
+    image-share  = ["ecs:*ImageSharePermission"]
+    image-delete = ["ecs:DeleteImage", "ecs:DescribeImages"]
+    image-all = [
+      "ecs:*Image*",
+      "ecs:DescribeInstances",
+      "ecs:DescribeSnapshots"
+    ]
+
+    ###########################
+    # resource vpc policy
+    ###########################
+    vpc-create = [
+      "vpc:CreateVpc",
+      "vpc:UntagResources",
+      "vpc:TagResources",
+      "vpc:ModifyVpcAttribute",
+      "vpc:DescribeVpcAttribute",
+      "vpc:ListTagResources",
+      "vpc:DescribeRouteTables"
+    ]
+    vpc-update = [
+      "vpc:UntagResources",
+      "vpc:TagResources",
+      "vpc:ModifyVpcAttribute",
+      "vpc:DescribeVpcAttribute",
+      "vpc:ListTagResources",
+      "vpc:DescribeRouteTables"
+    ]
+    vpc-read = [
+      "vpc:DescribeVpcAttribute",
+      "vpc:ListTagResources",
+      "vpc:DescribeRouteTables"
+    ]
+    vpc-delete = ["vpc:DeleteVpc", "vpc:DescribeVpcAttribute"]
+    vpc-all = [
+      "vpc:*Vpc*",
+      "vpc:UntagResources",
+      "vpc:TagResources",
+      "vpc:ListTagResources",
+      "vpc:DescribeVpcAttribute",
+      "vpc:DescribeRouteTables"
+    ]
+
+    ###########################
+    # resource vswitch policy
+    ###########################
+    vswitch-create = [
+      "vpc:CreateVSwitch",
+      "vpc:UntagResources",
+      "vpc:TagResources",
+      "vpc:DescribeVSwitchAttributes",
+      "vpc:ListTagResources"
+    ]
+    vswitch-update = [
+      "vpc:UntagResources",
+      "vpc:TagResources",
+      "vpc:ModifyVSwitchAttribute",
+      "vpc:DescribeVSwitchAttributes",
+      "vpc:ListTagResources"
+    ]
     vswitch-read   = ["vpc:DescribeVSwitchAttributes", "vpc:ListTagResources"]
-    vswitch-delete = ["vpc:DeleteVSwitch"]
-    vswithch-all   = ["vpc:*VSwitch*", "vpc:List*"]
+    vswitch-delete = ["vpc:DeleteVSwitch", "vpc:DescribeVSwitchAttributes"]
+    vswithch-all = [
+      "vpc:*VSwitch*",
+      "vpc:UntagResources",
+      "vpc:TagResources",
+      "vpc:ListTagResources"
+    ]
 
     ###########################
-    # eip policy
+    # resource eip policy
     ###########################
-    eip-create = ["vpc:AllocateEipAddress", "vpc:ModifyEipAddressAttribute", "vpc:DescribeEipAddresses", "vpc:ListTagResources"]
-    eip-update = ["vpc:ModifyEipAddressAttribute"]
-    eip-read   = ["vpc:DescribeEipAddresses", "vpc:ListTagResources"]
-    eip-delete = ["vpc:ReleaseEipAddress", "vpc:DescribeEipAddresses"]
-    eip-all    = ["vpc:AllocateEipAddress", "vpc:ModifyEipAddressAttribute", "vpc:DescribeEipAddresses", "vpc:ListTagResources", "vpc:ReleaseEipAddress"]
+    eip-create = [
+      "vpc:AllocateEipAddress",
+      "vpc:UntagResources",
+      "vpc:TagResources",
+      "vpc:ModifyEipAddressAttribute",
+      "vpc:DescribeEipAddresses"
+    ]
+    eip-update = [
+      "vpc:UntagResources",
+      "vpc:TagResources",
+      "vpc:ModifyEipAddressAttribute",
+      "vpc:DescribeEipAddresses"
+    ]
+    eip-read        = ["vpc:DescribeEipAddresses"]
+    eip-delete      = ["vpc:ReleaseEipAddress", "vpc:DescribeEipAddresses"]
+    eip-associate   = ["vpc:AssociateEipAddress", "vpc:DescribeEipAddresses"]
+    eip-unassociate = ["vpc:UnassociateEipAddress", "vpc:DescribeEipAddresses"]
+    eip-delete      = ["vpc:ReleaseEipAddress", "vpc:DescribeEipAddresses"]
+    eip-all = [
+      "vpc:*EipAddress*",
+      "vpc:UntagResources",
+      "vpc:TagResources"
+    ]
 
     ###########################
-    # slb policy
+    # resource slb policy
     ###########################
-    slb-create = ["slb:CreateLoadBalancer", "slb:Describe*", "slb:*Tags", "slb:Set*", "slb:Modify*"]
-    slb-update = ["slb:*Tags", "slb:Set*", "slb:Modify*"]
-    slb-read   = ["slb:Describe*"]
-    slb-delete = ["slb:DeleteLoadBalancer", "slb:Describe*"]
-    slb-all    = ["slb:CreateLoadBalancer", "slb:Describe*", "slb:*Tags", "slb:Set*", "slb:Modify*", "slb:DeleteLoadBalancer"]
+    slb-create = [
+      "slb:CreateLoadBalancer",
+      "slb:UntagResources",
+      "slb:TagResources",
+      "slb:DescribeLoadBalancerAttribute",
+      "slb:ListTagResources"
+    ]
+    slb-update = [
+      "slb:UntagResources",
+      "slb:TagResources",
+      "slb:SetLoadBalancer*",
+      "slb:ModifyLoadBalancer*",
+      "slb:DescribeLoadBalancerAttribute",
+      "slb:ListTagResources"
+    ]
+    slb-read   = ["slb:DescribeLoadBalancerAttribute", "slb:ListTagResources"]
+    slb-delete = ["slb:DeleteLoadBalancer", "slb:DescribeLoadBalancerAttribute"]
+    slb-all = [
+      "slb:*LoadBalancer*",
+      "slb:UntagResources",
+      "slb:TagResources",
+      "slb:ListTagResources"
+    ]
 
     ###########################
-    # rds policy
+    # resource rds instance policy
     ###########################
-    rds-create = ["vpc:Describe*", "drds:CreateDrdsInstance", "drds:ModifyDrdsInstanceDescription", "drds:DescribeDrdsInstance"]
-    rds-update = ["drds:ModifyDrdsInstanceDescription"]
-    rds-read   = ["drds:DescribeDrdsInstance"]
-    rds-delete = ["drds:RemoveDrdsInstance"]
-    rds-all    = ["vpc:Describe*", "drds:CreateDrdsInstance", "drds:ModifyDrdsInstanceDescription", "drds:DescribeDrdsInstance", "drds:RemoveDrdsInstance"]
+    db-instance-create = [
+      "rds:CreateDBInstance",
+      "vpc:DescribeVSwitchAttributes",
+      "rds:ModifyParameter",
+      "rds:UntagResources",
+      "rds:TagResources",
+      "rds:ModifyInstanceAutoRenewalAttribute",
+      "rds:ModifySecurityGroupConfiguration",
+      "rds:ModifyDBInstance*",
+      "rds:DescribeDBInstance*",
+      "rds:DescribeTags",
+      "rds:DescribeSQLCollector*",
+      "rds:DescribeParameters",
+      "rds:DescribeInstanceAutoRenewalAttribute",
+      "rds:DescribeSecurityGroupConfiguration"
+    ]
+    db-instance-update = [
+      "rds:ModifyParameter",
+      "rds:UntagResources",
+      "rds:TagResources",
+      "rds:ModifyInstanceAutoRenewalAttribute",
+      "rds:ModifySecurityGroupConfiguration",
+      "rds:ModifyDBInstance*",
+      "rds:DescribeDBInstance*",
+      "rds:DescribeTags",
+      "rds:DescribeSQLCollector*",
+      "rds:DescribeParameters",
+      "rds:DescribeInstanceAutoRenewalAttribute",
+      "rds:DescribeSecurityGroupConfiguration"
+    ]
+    db-instance-read = [
+      "rds:DescribeDBInstance*",
+      "rds:DescribeTags",
+      "rds:DescribeSQLCollector*",
+      "rds:DescribeParameters",
+      "rds:DescribeInstanceAutoRenewalAttribute",
+      "rds:DescribeSecurityGroupConfiguration"
+    ]
+    db-instance-delete = ["rds:DeleteDBInstance", "rds:DescribeDBInstanceAttribute"]
+    db-instance-all = [
+      "rds:*Instance*",
+      "rds:ModifyParameter",
+      "rds:UntagResources",
+      "rds:TagResources",
+      "rds:ModifySecurityGroupConfiguration",
+      "rds:DescribeTags",
+      "rds:DescribeSQLCollector*",
+      "rds:DescribeParameters",
+      "rds:DescribeSecurityGroupConfiguration"
+    ]
 
     ###########################
-    # oss bucket policy
+    # resource oss bucket policy
     ###########################
-    oss-bucket-create  = ["oss:IsBucketExist", "oss:CreateBucket", "oss:SetBucketACL", "oss:DeleteBucket*", "oss:SetBucket*", "oss:GetBucket*", "oss:Conn.*"]
-    oss-bucket-update  = ["oss:SetBucketACL", "oss:DeleteBucket*", "oss:SetBucket*"]
-    oss-bucket-read    = ["oss:Get*", "oss:List*"]
-    oss-bucket-deletef = ["oss:IsBucketExist", "oss:DeleteBucket", "oss:Bucket", "oss:GetBucketInfo"]
-    oss-bucket-all     = ["oss:*Bucket*", "oss:Get*", "oss:List*"]
-
-    ###########################
-    # disk policy
-    ###########################
-    disk-create = ["ecs:Describe*", "ecs:CreateDisk", "ecs:ModifyDiskAttribute", "ecs:ResizeDisk"]
-    disk-update = ["ecs:ModifyDiskAttribute", "ecs:ResizeDisk"]
-    disk-read   = ["ecs:Describe*"]
-    disk-delete = ["ecs:DeleteDisk", "ecs:Describe*"]
-    disk-all    = ["ecs:Describe*", "ecs:CreateDisk", "ecs:ModifyDiskAttribute", "ecs:ResizeDisk", "ecs:DeleteDisk"]
-
-    ###########################
-    # image policy
-    ###########################
-    image-create = ["ecs:Describe*", "ecs:CreateImage", "ecs:CopyImage", "ecs:ExportImage", "ecs:ImportImage", "ecs:ModifyImageSharePermission", "ecs:DescribeImageSharePermission"]
-    image-update = ["ecs:ModifyImageAttribute", "ecs:Describe*"]
-    image-read   = ["ecs:Describe*"]
-    image-delete = ["ecs:DeleteImage", "ecs:ModifyImageSharePermission"]
-    image-all    = ["ecs:*Image*", "ecs:Describe*"]
+    oss-bucket-create = [
+      "oss:ListBuckets",
+      "oss:CreateBucket",
+      "oss:SetBucketACL",
+      "oss:*BucketCORS",
+      "oss:*BucketWebsite",
+      "oss:*BucketLogging",
+      "oss:*BucketReferer",
+      "oss:*BucketLifecycle",
+      "oss:*BucketEncryption",
+      "oss:*BucketTagging",
+      "oss:SetBucketVersioning",
+      "oss:GetBucketInfo"
+    ]
+    oss-bucket-update = [
+      "oss:SetBucketACL",
+      "oss:*BucketCORS",
+      "oss:*BucketWebsite",
+      "oss:*BucketLogging",
+      "oss:*BucketReferer",
+      "oss:*BucketLifecycle",
+      "oss:*BucketEncryption",
+      "oss:*BucketTagging",
+      "oss:SetBucketVersioning",
+      "oss:GetBucketInfo"
+    ]
+    oss-bucket-read = ["oss:GetBucket*"]
+    oss-bucket-delete = [
+      "oss:ListBuckets",
+      "oss:DeleteBucket",
+      "oss:GetBucketInfo"
+    ]
+    oss-bucket-all = ["oss:*Bucket*"]
   }
 }

@@ -1,6 +1,4 @@
-# terraform-alicloud-ram-policy
-Terraform模块，可在阿里云上创建RAM策略。
-
+terraform-alicloud-ram-policy
 =====================================================================
 
 中文简体 | [English](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/README.md)
@@ -13,66 +11,51 @@ Terraform模块可以在阿里云上创建自定义策略。
 
 ## Terraform 版本
 
-如果您正在使用 Terraform 0.12.
+本 Module 要求使用 Terraform 0.12.
 
 ## 用法
 
-#### 使用Terraform默认的操作创建自定义策略
-
 ```hcl
-module "instance_policy" {
+module "ram-policy" {
   source = "terraform-alicloud-modules/ram-policy/alicloud"
   policies = [
+    #########################################
+    # 使用预定义的 Policy Actions 创建自定义策略 #
+    #########################################
     {
-       # name is the name of the policy, if not specified, the system will generate names prefixed with `terraform_ram_policy_` by default
+       # 自定义policy名称。默认为一个以terraform-ram-policy-为前缀的名称。
        name = "test"
-       # defined_action is the default resource operation specified by the system. You can refer to the `policies.tf` file.
-       defined_action   = join(",", ["instance-create", "vpc-create", "vswitch-create", "security-group-create"])
-       effect             = "Allow"
-       force              = "true"
-    }
-  ]
-}
-```
+       # 预定义的Actions。文件 policies.tf 预定义了一些terraform相关的actions
+       defined_actions = join(",", ["instance-create", "vpc-create", "vswitch-create", "security-group-create"])
+       effect          = "Allow"
+       force           = "true"
+    },
 
-#### 使用自定义的操作和资源创建自定义策略
-
-```hcl
-module "instance_policy" {
-  source = "terraform-alicloud-modules/ram-policy/alicloud"
-  policies = [
+    #########################################
+    # 使用自定义的 Policy Actions 创建自定义策略 #
+    #########################################
     {
-        #actions is the action of custom specific resource.
-        #resources is the specific object authorized to customize.
-        actions    = join(",", ["ecs:xxxx", "vpc:xxxx", "vswitch:xxxe"])
-        resources  = join(",", ["xxx:ecs:xxxx", "xxx:vpc:xxxx", "xxx:vswitch:xxxe"])
-        effect           = "Deny"
-    }
-  ]
-}
-```
-
-#### 使用Terraform默认和自定义的操作结合创建自定义策略
-
-```hcl
-module "instance_policy" {
-  source = "terraform-alicloud-modules/ram-policy/alicloud"
-  policies = [
+        actions   = join(",", ["ecs:ModifyInstanceAttribute", "vpc:ModifyVpc", "vswitch:ModifyVSwitch"])
+        resources = join(",", ["acs:ecs:*:*:instance/i-001", "acs:vpc:*:*:vpc/v-001", "acs:vpc:*:*:vswitch/vsw-001"])
+        effect    = "Deny"
+    },
+    
+    ###################################################
+    # 同时使用预定义和自定义的 Policy Actions 创建自定义策略 #
+    ################################################### 
     {
-    actions    = join(",", ["ecs:xxxx", "vpc:xxxx", "vswitch:xxxe"])
-    resources  = join(",", ["xxx:ecs:xxxx", "xxx:vpc:xxxx", "xxx:vswitch:xxxe"])
-    defined_action   = join(",", ["instance-create", "vpc-create", "vswitch-create", "security-group-create"])
-    defined_resource = join(",", ["instance-resource", "vpc-resource", "security-group-resource", "vswitch-resource"])
-    effect           = "Allow"
+        defined_actions = join(",", ["security-group-read", "security-group-rule-read"])
+        actions         = join(",", ["ecs:JoinSecurityGroup", "ecs:LeaveSecurityGroup"])
+        resources       = join(",", ["acs:ecs:cn-qingdao:*:instance/*", "acs:ecs:cn-qingdao:*:security-group/*"])
+        effect          = "Allow"
     }
   ]
 }
 ```
-
 
 ## 示例
 
-* [ecs-instance-policy example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/tree/master/examples/ecs-instance-create)
+* [完整的 Ram Policy 示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/tree/master/examples/complete)
 
 
 作者
