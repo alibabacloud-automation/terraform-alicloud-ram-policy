@@ -1,6 +1,6 @@
-# ecs-instance-create example
+# complete example
 
-Configuration in this directory will create ECS instance policy。
+Configuration in this directory will create a complete policy。
 
 
 ## Usage

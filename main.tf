@@ -45,6 +45,6 @@ resource "alicloud_ram_policy" "policy_with_actions" {
             ]
 		}
 	  EOF
-  description = var.description
-  force       = lookup(var.policies[count.index], "force", "true")
+  description = "An Ram Policy created by terraform-alicloud-modules/ram-policy"
+  force       = lookup(var.policies[count.index], "force", true)
 }
