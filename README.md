@@ -27,9 +27,9 @@ module "ram-policy" {
        # name is the name of the policy, default to a name with prefix `terraform-ram-policy-`
        name = "test"
        # defined_action is the default resource operation specified by the system. You can refer to the `policies.tf` file.
-       defined_actions   = join(",", ["instance-create", "vpc-create", "vswitch-create", "security-group-create"])
-       effect           = "Allow"
-       force            = "true"
+       defined_actions = join(",", ["instance-create", "vpc-create", "vswitch-create", "security-group-create"])
+       effect          = "Allow"
+       force           = "true"
     },
 
     ########################################
@@ -38,19 +38,19 @@ module "ram-policy" {
     {
         #actions is the action of custom specific resource.
         #resources is the specific object authorized to customize.
-        actions    = join(",", ["ecs:ModifyInstanceAttribute", "vpc:ModifyVpc", "vswitch:ModifyVSwitch"])
-        resources  = join(",", ["acs:ecs:*:*:instance/i-001", "acs:vpc:*:*:vpc/v-001", "acs:vpc:*:*:vswitch/vsw-001"])
-        effect     = "Deny"
+        actions   = join(",", ["ecs:ModifyInstanceAttribute", "vpc:ModifyVpc", "vswitch:ModifyVSwitch"])
+        resources = join(",", ["acs:ecs:*:*:instance/i-001", "acs:vpc:*:*:vpc/v-001", "acs:vpc:*:*:vswitch/vsw-001"])
+        effect    = "Deny"
     },
     
     #########################################################
     # Create policies using both default and custom actions #
     #########################################################  
     {
-        defined_actions   = join(",", ["security-group-read", "security-group-rule-read"])
-        actions          = join(",", ["ecs:JoinSecurityGroup", "ecs:LeaveSecurityGroup"])
-        resources = join(",", ["acs:ecs:cn-qingdao:*:instance/*", "acs:ecs:cn-qingdao:*:security-group/*"])
-        effect           = "Allow"
+        defined_actions = join(",", ["security-group-read", "security-group-rule-read"])
+        actions         = join(",", ["ecs:JoinSecurityGroup", "ecs:LeaveSecurityGroup"])
+        resources       = join(",", ["acs:ecs:cn-qingdao:*:instance/*", "acs:ecs:cn-qingdao:*:security-group/*"])
+        effect          = "Allow"
     }
   ]
 }
