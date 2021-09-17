@@ -1,36 +1,41 @@
 module "policy" {
-  source = "../../"
-
-  policies = [
+  source     = "../../"
+  create    = true
+  policies  = [
     ###################################################################
     # ram policy with default actions used to to manage ecs Instance  #
     ###################################################################
     {
-      name            = "manage-instance-resource"
-      defined_actions = join(",", ["instance-all", "vpc-all", "vswitch-all", "security-group-all", "security-group-rule-all"])
-      effect          = "Allow"
-      force           = "true"
+      name            = "tf-manage-instance-resource-001"
+      defined_actions = var.ecs_defined_actions
+      effect          = var.effect
+      force           = var.force
     },
 
     ###############################################################
     # ram policy with custom actions used to to manage OSS bucket #
     ###############################################################
     {
-      name      = "manage-oss-bucket-resource"
-      actions   = join(",", ["oss:PutBucket*", "SetBucket", "GetBucket*", "DeleteBucket*"])
-      resources = join(",", ["acs:oss:*:*:*"])
-      effect    = "Allow"
-      force     = "true"
+      name      = "tf-manage-oss-bucket-resource-001"
+      actions   = var.oss_bucket_actions
+      resources = var.oss_bucket_resources
+      effect    = var.effect
+      force     = var.force
     },
 
     #################################################################################
     # ram policy with bosh defined and custom actions used to to manage slb and eip #
     #################################################################################
     {
-      name            = "manage-slb-and-eip-resource"
-      defined_actions = join(",", ["slb-all", "vpc-all", "vswitch-all"])
-      actions         = join(",", ["vpc:AssociateEipAddress", "vpc:UnassociateEipAddress"])
-      resources       = join(",", ["acs:vpc:*:*:eip/eip-12345", "acs:slb:*:*:*"])
+      name            = "tf-manage-slb-and-eip-resource-001"
+      defined_actions = var.slb_eip_defined_actions
+      actions         = var.slb_eip_actions
+      resources       = var.slb_eip_resources
     }
   ]
+}
+
+module "policy2" {
+  source = "../../"
+  create = false
 }

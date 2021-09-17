@@ -1,6 +1,6 @@
 # complete example
 
-Configuration in this directory will create a complete policy。
+Configuration in this directory will create custom policies on Alibaba Cloud.
 
 
 ## Usage

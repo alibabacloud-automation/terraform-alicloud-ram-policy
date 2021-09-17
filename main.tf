@@ -22,8 +22,8 @@ locals {
 resource "alicloud_ram_policy" "policy_with_actions" {
   count = var.create ? length(var.policies) : 0
 
-  name        = lookup(var.policies[count.index], "name", format("terraform-ram-policy-%03d", count.index))
-  document    = <<EOF
+  policy_name        = lookup(var.policies[count.index], "name", format("terraform-ram-policy-%03d", count.index))
+  policy_document    = <<EOF
 		{
             "Version": "1",
             "Statement": [
