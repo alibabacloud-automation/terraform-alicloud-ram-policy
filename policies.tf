@@ -248,7 +248,6 @@ variable "defined_actions" {
     eip-delete      = ["vpc:ReleaseEipAddress", "vpc:DescribeEipAddresses"]
     eip-associate   = ["vpc:AssociateEipAddress", "vpc:DescribeEipAddresses"]
     eip-unassociate = ["vpc:UnassociateEipAddress", "vpc:DescribeEipAddresses"]
-    eip-delete      = ["vpc:ReleaseEipAddress", "vpc:DescribeEipAddresses"]
     eip-all = [
       "vpc:*EipAddress*",
       "vpc:UntagResources",
