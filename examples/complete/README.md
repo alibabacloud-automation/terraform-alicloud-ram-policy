@@ -15,7 +15,6 @@ $ terraform apply
 
 Note that this example will create resources which cost money. Run `terraform destroy` when you don't need these resources.
 
-<!-- 在根目录下运行命令 `terraform-docs markdown . --output-file "./README.md"`，可将所有信息自动填充 -->
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

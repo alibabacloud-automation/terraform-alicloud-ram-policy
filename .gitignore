@@ -43,4 +43,4 @@ override.tf.json
 # others
 *.bak
 *.bk
-
+generate-policy-module.sh

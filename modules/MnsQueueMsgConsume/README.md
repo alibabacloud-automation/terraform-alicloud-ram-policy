@@ -1,3 +1,5 @@
+# MnsQueueMsgConsume
+
 ## Usage
 
 Create a policy that allow to send to MNS queue, consume from MNS queue, set message visibility, delete messages after consumption.
@@ -9,7 +11,6 @@ module "example" {
 }
 ```
 
-<!-- 在根目录下运行命令 README.md updated successfully，可将所有信息自动填充 -->
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

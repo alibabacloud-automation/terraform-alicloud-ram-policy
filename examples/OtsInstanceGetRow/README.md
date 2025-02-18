@@ -1,4 +1,19 @@
-<!-- 在根目录下运行命令 README.md updated successfully，可将所有信息自动填充 -->
+# OtsInstanceGetRow
+
+Configuration in this directory create a policy that allow to query all table data in a specified OTS instance, retrieve single row data, perform batch queries for multiple rows of data, and use secondary indexes for searching.
+
+## Usage
+
+To run this example you need to execute:
+
+```bash
+$ terraform init
+$ terraform plan
+$ terraform apply
+```
+
+Run `terraform destroy` when you don't need these resources.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

@@ -1,4 +1,19 @@
-<!-- 在根目录下运行命令 README.md updated successfully，可将所有信息自动填充 -->
+# PowerUserAccess
+
+Configuration in this directory create a policy for power user, who is responsible for enterprise cloud operation, can create and view and operate all cloud services, can NOT manage identity permissions, can NOT manage account structure, can NOT use financial center.
+
+## Usage
+
+To run this example you need to execute:
+
+```bash
+$ terraform init
+$ terraform plan
+$ terraform apply
+```
+
+Run `terraform destroy` when you don't need these resources.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

@@ -1,4 +1,19 @@
-<!-- 在根目录下运行命令 README.md updated successfully，可将所有信息自动填充 -->
+# NetworkAdministrator
+
+Configuration in this directory create a policy for network Administrator, who is responsible for building and managing the network architecture of enterprise, can open and create network services, has all permissions for network services and ECS security groups.
+
+## Usage
+
+To run this example you need to execute:
+
+```bash
+$ terraform init
+$ terraform plan
+$ terraform apply
+```
+
+Run `terraform destroy` when you don't need these resources.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

@@ -1,4 +1,19 @@
-<!-- 在根目录下运行命令 README.md updated successfully，可将所有信息自动填充 -->
+# EcsFullAccessDenyBuy
+
+Configuration in this directory create a policy that allow to full access ECS service and deny to buy and renew and modify spec.
+
+## Usage
+
+To run this example you need to execute:
+
+```bash
+$ terraform init
+$ terraform plan
+$ terraform apply
+```
+
+Run `terraform destroy` when you don't need these resources.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

@@ -1,3 +1,5 @@
+# FinanceStaff
+
 ## Usage
 
 Create a policy for finance staff, who is responsible for financial work of the enterprise, can view bills, recharge and pay, invoice, etc., can use financial analysis, and has all permissions for financial account system.
@@ -8,7 +10,6 @@ module "example" {
 }
 ```
 
-<!-- 在根目录下运行命令 README.md updated successfully，可将所有信息自动填充 -->
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

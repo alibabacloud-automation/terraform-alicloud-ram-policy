@@ -1,3 +1,5 @@
+# RamFullAccessOnlyMFAEnabled
+
 ## Usage
 
 Create a policy that allow to full access RAM and deny to access RAM if MFA disabled.
@@ -8,7 +10,6 @@ module "example" {
 }
 ```
 
-<!-- 在根目录下运行命令 README.md updated successfully，可将所有信息自动填充 -->
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

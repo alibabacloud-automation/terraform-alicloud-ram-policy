@@ -1,3 +1,5 @@
+# SecurityAdministrator
+
 ## Usage
 
 Create a policy for security administrator, who is responsible for enterprise cloud security, can open and create cloud security services, develop and implement security rules, has all permissions for security services.
@@ -8,7 +10,6 @@ module "example" {
 }
 ```
 
-<!-- 在根目录下运行命令 README.md updated successfully，可将所有信息自动填充 -->
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
