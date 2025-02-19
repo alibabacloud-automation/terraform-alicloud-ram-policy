@@ -1,3 +1,5 @@
+Terraform module which create RAM policies on Alibaba Cloud.
+
 terraform-alicloud-ram-policy
 =====================================================================
 
