@@ -3,7 +3,7 @@ Terraform module which create RAM policies on Alibaba Cloud.
 terraform-alicloud-ram-policy
 =====================================================================
 
-中文简体 | [English](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/README.md)
+简体中文 | [English](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/README.md)
 
 terraform-alicloud-ram-policy 用于场景化的的策略创建。
 
