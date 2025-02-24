@@ -124,6 +124,44 @@ data "alicloud_ram_policy_document" {
 * [MaxComputeAccessOSSBucket](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/MaxComputeAccessOSSBucket)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessOSSBucket)) - Allow MaxCompute to access specified OSS Bucket
 * [MaxComputeAccessKMSKey](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/MaxComputeAccessKMSKey)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessKMSKey)) - Allow MaxCompute to encrypt or decrypt with specified KMS key
 
+## Examples
+
+* [PowerUserAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/PowerUserAccess)
+* [FinanceStaff](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/FinanceStaff)
+* [NetworkAdministrator](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/NetworkAdministrator)
+* [DatabaseAdministrator](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/DatabaseAdministrator)
+* [SecurityAdministrator](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/SecurityAdministrator)
+* [AuditAdministrator](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AuditAdministrator)
+* [EcsFullAccessDenySecurityChange](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/EcsFullAccessDenySecurityChange)
+* [RdsFullAccessDenySecurityChange](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RdsFullAccessDenySecurityChange)
+* [EcsInstanceReboot](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/EcsInstanceReboot)
+* [EcsInstanceRunCommand](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/EcsInstanceRunCommand)
+* [RdsDbInstanceBackup](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RdsDbInstanceBackup)
+* [RedisDbInstanceAccount](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RedisDbInstanceAccount)
+* [OssBucketReadOnly](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/OssBucketReadOnly)
+* [MnsQueueMsgConsume](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MnsQueueMsgConsume)
+* [OssBucketPutObject](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/OssBucketPutObject)
+* [OtsInstanceGetRow](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/OtsInstanceGetRow)
+* [OssBucketFullAccessDenyDelete](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/OssBucketFullAccessDenyDelete)
+* [CrRepositoryPull](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/CrRepositoryPull)
+* [CrRepositoryFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/CrRepositoryFullAccess)
+* [KmsKeyUse](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/KmsKeyUse)
+* [KmsSecretReadOnly](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/KmsSecretReadOnly)
+* [AlidnsDomainFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AlidnsDomainFullAccess)
+* [EcsFullAccessDenyBuy](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/EcsFullAccessDenyBuy)
+* [RdsFullAccessDenyBuy](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RdsFullAccessDenyBuy)
+* [RedisFullAccessDenyBuy](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RedisFullAccessDenyBuy)
+* [SlbFullAccessDenyBuy](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/SlbFullAccessDenyBuy)
+* [BssReadOnly](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/BssReadOnly)
+* [RamFullAccessOnlyMFAEnabled](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RamFullAccessOnlyMFAEnabled)
+* [PostLogToSlsProject](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/PostLogToSlsProject)
+* [AckClusterFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AckClusterFullAccess)
+* [AhasApplicaitonReadOnly](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AhasApplicaitonReadOnly)
+* [AhasApplicaitonFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AhasApplicaitonFullAccess)
+* [MaxComputeAccessOSSBucket](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessOSSBucket)
+* [MaxComputeAccessKMSKey](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessKMSKey)
+* [complete](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/complete)
+
 ## Notes
 From the version v1.1.0, the module has removed the following `provider` setting:
 

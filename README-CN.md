@@ -121,15 +121,51 @@ data "alicloud_ram_policy_document" {
 * [RedisFullAccessDenyBuy](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/RedisFullAccessDenyBuy)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RedisFullAccessDenyBuy)) - 允许完全访问 Redis，禁止购买、续费、变配等资金相关操作。
 * [SlbFullAccessDenyBuy](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/SlbFullAccessDenyBuy)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/SlbFullAccessDenyBuy)) - 允许完全访问 SLB，禁止购买、续费、变配等资金相关操作。
 * [BssReadOnly](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/BssReadOnly)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/BssReadOnly)) - 允许查看费用中心，支持导出订单和账单数据。
-* [RamFullAccessOnlyMFAEnabled](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/RamFullAccessOnlyMFAEnabled)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RamFullAccessOnlyMFAEnabled)) - 允许用户完全访问 RAM，禁止 MFA 未启用的用户访问 RAM .
-* [PostLogToSlsProject](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/PostLogToSlsProject)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/PostLogToSlsProject)) - 允许向指定日志项目投递日志
+* [RamFullAccessOnlyMFAEnabled](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/RamFullAccessOnlyMFAEnabled)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RamFullAccessOnlyMFAEnabled)) - 允许用户完全访问 RAM，禁止 MFA 未启用的用户访问 RAM。
+* [PostLogToSlsProject](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/PostLogToSlsProject)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/PostLogToSlsProject)) - 允许向指定日志项目投递日志。
 * [AckClusterFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/AckClusterFullAccess)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AckClusterFullAccess)) - 允许列出和查询指定的容器服务集群。
-* [AhasApplicaitonReadOnly](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/AhasApplicaitonReadOnly)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AhasApplicaitonReadOnly)) - 允许查看指定 AHAS 应用
-* [AhasApplicaitonFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/AhasApplicaitonFullAccess)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AhasApplicaitonFullAccess)) - 允许查看指定 AHAS 应用和授权服务启用
-* [MaxComputeAccessOSSBucket](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/MaxComputeAccessOSSBucket)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessOSSBucket)) - 允许 MaxCompute 访问指定 OSS Bucket
-* [MaxComputeAccessKMSKey](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/MaxComputeAccessKMSKey)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessKMSKey)) - 允许按照 MaxCompute 需要使用 KMS 密钥执行加解密
+* [AhasApplicaitonReadOnly](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/AhasApplicaitonReadOnly)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AhasApplicaitonReadOnly)) - 允许查看指定 AHAS 应用。
+* [AhasApplicaitonFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/AhasApplicaitonFullAccess)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AhasApplicaitonFullAccess)) - 允许查看指定 AHAS 应用和授权服务启用。
+* [MaxComputeAccessOSSBucket](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/MaxComputeAccessOSSBucket)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessOSSBucket)) - 允许 MaxCompute 访问指定 OSS Bucket。
+* [MaxComputeAccessKMSKey](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/modules/MaxComputeAccessKMSKey)([example](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessKMSKey)) - 允许按照 MaxCompute 需要使用 KMS 密钥执行加解密。
 
 ## 示例
+
+* [PowerUserAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/PowerUserAccess)
+* [FinanceStaff](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/FinanceStaff)
+* [NetworkAdministrator](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/NetworkAdministrator)
+* [DatabaseAdministrator](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/DatabaseAdministrator)
+* [SecurityAdministrator](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/SecurityAdministrator)
+* [AuditAdministrator](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AuditAdministrator)
+* [EcsFullAccessDenySecurityChange](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/EcsFullAccessDenySecurityChange)
+* [RdsFullAccessDenySecurityChange](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RdsFullAccessDenySecurityChange)
+* [EcsInstanceReboot](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/EcsInstanceReboot)
+* [EcsInstanceRunCommand](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/EcsInstanceRunCommand)
+* [RdsDbInstanceBackup](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RdsDbInstanceBackup)
+* [RedisDbInstanceAccount](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RedisDbInstanceAccount)
+* [OssBucketReadOnly](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/OssBucketReadOnly)
+* [MnsQueueMsgConsume](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MnsQueueMsgConsume)
+* [OssBucketPutObject](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/OssBucketPutObject)
+* [OtsInstanceGetRow](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/OtsInstanceGetRow)
+* [OssBucketFullAccessDenyDelete](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/OssBucketFullAccessDenyDelete)
+* [CrRepositoryPull](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/CrRepositoryPull)
+* [CrRepositoryFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/CrRepositoryFullAccess)
+* [KmsKeyUse](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/KmsKeyUse)
+* [KmsSecretReadOnly](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/KmsSecretReadOnly)
+* [AlidnsDomainFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AlidnsDomainFullAccess)
+* [EcsFullAccessDenyBuy](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/EcsFullAccessDenyBuy)
+* [RdsFullAccessDenyBuy](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RdsFullAccessDenyBuy)
+* [RedisFullAccessDenyBuy](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RedisFullAccessDenyBuy)
+* [SlbFullAccessDenyBuy](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/SlbFullAccessDenyBuy)
+* [BssReadOnly](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/BssReadOnly)
+* [RamFullAccessOnlyMFAEnabled](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/RamFullAccessOnlyMFAEnabled)
+* [PostLogToSlsProject](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/PostLogToSlsProject)
+* [AckClusterFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AckClusterFullAccess)
+* [AhasApplicaitonReadOnly](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AhasApplicaitonReadOnly)
+* [AhasApplicaitonFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AhasApplicaitonFullAccess)
+* [MaxComputeAccessOSSBucket](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessOSSBucket)
+* [MaxComputeAccessKMSKey](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessKMSKey)
+* [complete](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/complete)
 
 ## 注意事项
 本Module从版本v1.1.0开始已经移除掉如下的 provider 的显示设置：
