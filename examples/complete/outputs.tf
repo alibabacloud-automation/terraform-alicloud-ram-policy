@@ -1,8 +1,8 @@
-output "this_policy_id" {
+output "policy_id" {
   description = "id of the custom policy."
-  value       = module.policy.this_policy_id
+  value       = module.policy.policy_id
 }
-output "this_policy_name" {
+output "policy_name" {
   description = "Name of the custom policy."
-  value       = module.policy.this_policy_name
+  value       = module.policy.policy_name
 }
