@@ -160,7 +160,6 @@ data "alicloud_ram_policy_document" {
 * [AhasApplicaitonFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AhasApplicaitonFullAccess)
 * [MaxComputeAccessOSSBucket](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessOSSBucket)
 * [MaxComputeAccessKMSKey](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessKMSKey)
-* [complete](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/complete)
 
 ## Notes
 From the version v1.1.0, the module has removed the following `provider` setting:

@@ -165,7 +165,6 @@ data "alicloud_ram_policy_document" {
 * [AhasApplicaitonFullAccess](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/AhasApplicaitonFullAccess)
 * [MaxComputeAccessOSSBucket](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessOSSBucket)
 * [MaxComputeAccessKMSKey](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/MaxComputeAccessKMSKey)
-* [complete](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-policy/blob/master/examples/complete)
 
 ## 注意事项
 本Module从版本v1.1.0开始已经移除掉如下的 provider 的显示设置：
